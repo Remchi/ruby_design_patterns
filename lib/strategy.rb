@@ -11,7 +11,11 @@ class Hero
   end
 
   def print_stats
-    printer.print(damage, health, skills)
+    if block_given?
+      yield(damage, health, skills)
+    else
+      printer.print(damage, health, skills)
+    end
   end
 end
 
