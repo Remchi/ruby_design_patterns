@@ -3,10 +3,30 @@ require_relative '../lib/strategy'
 
 describe "Strategy Pattern" do
 
+  describe "Strategy Contract" do
+    it "Hero sends print message to printer" do
+      printer = double("printer")
+      printer.stub(:print)
+      hero = Hero.new printer
+
+      printer.should_receive(:print).with(hero.damage, hero.health, hero.skills)
+      hero.print_stats
+    end
+
+    it "BattleStats responds to printer message" do
+      expect(BattleStats.new).to respond_to(:print)
+    end
+    it "SkillsStats responds to printer message" do
+      expect(SkillsStats.new).to respond_to(:print)
+    end
+  end
+
   describe Hero do
     let(:hero) { Hero.new BattleStats.new }
 
     it "has damage" do
+
+
       expect(hero.damage).to eq(10)
     end
 
