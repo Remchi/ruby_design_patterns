@@ -21,7 +21,7 @@ describe "Strategy Pattern" do
 
       it "prints skills" do
         hero.printer = SkillsStats.new
-        expect(hero.print_stats(:skills)).to eq("Stealth\nDriving\nIntimidation\n")
+        expect(hero.print_stats).to eq("Stealth\nDriving\nIntimidation\n")
       end
     end
 
