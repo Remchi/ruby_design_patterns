@@ -7,8 +7,8 @@ describe "Composite Pattern" do
     context "consists from Encounter and Diplomacy" do
       it "has reward of 600" do
         quest = Quest.new
-        quest.add(Encounter.new)
-        quest.add(Diplomacy.new)
+        quest << Encounter.new
+        quest << Diplomacy.new
 
         expect(quest.reward).to eq(600)
       end
@@ -18,17 +18,17 @@ describe "Composite Pattern" do
   describe MegaQuest do
     it "consists from 2 quests and one Encounter" do
       quest1 = Quest.new
-      quest1.add(Puzzle.new)
-      quest1.add(Encounter.new)
+      quest1 << Puzzle.new
+      quest1 << Encounter.new
 
       quest2 = Quest.new
-      quest2.add(Puzzle.new)
-      quest2.add(Diplomacy.new)
+      quest2 << Puzzle.new
+      quest2 << Diplomacy.new
 
       mega = MegaQuest.new
-      mega.add(quest1)
-      mega.add(quest2)
-      mega.add(Puzzle.new)
+      mega << quest1
+      mega << quest2
+      mega << Puzzle.new
 
       expect(mega.reward).to eq(1200)
     end
