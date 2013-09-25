@@ -18,11 +18,8 @@ describe "Iterator Pattern" do
     end
 
     it "can be iterated through items to get total cost" do
-      iterator = InventoryIterator.new(inventory)
       result = 0
-      while iterator.has_next?
-        result += iterator.next.cost
-      end
+      inventory.each { |item| result += item.cost }
       expect(result).to eq(30)
     end
 
