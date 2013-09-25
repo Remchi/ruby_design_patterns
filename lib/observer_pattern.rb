@@ -1,8 +1,7 @@
-class Tile
+module Observable
   attr_reader :observers
 
   def initialize(attrs = {})
-    @cursed = attrs.fetch(:cursed, false)
     @observers = []
   end
 
@@ -10,12 +9,21 @@ class Tile
     @observers << observer
   end
 
-  def cursed?
-    @cursed
-  end
-
   def notify_observers
     observers.each { |observer| observer.update }
+  end
+end
+
+class Tile
+  include Observable
+
+  def initialize(attrs = {})
+    super
+    @cursed = attrs.fetch(:cursed, false)
+  end
+
+  def cursed?
+    @cursed
   end
 
   def activate_curse
