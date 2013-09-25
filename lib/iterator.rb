@@ -1,4 +1,6 @@
 class Inventory
+  include Enumerable
+
   attr_reader :items
 
   def initialize
