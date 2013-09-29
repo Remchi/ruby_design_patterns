@@ -7,7 +7,7 @@ describe "Decorator Pattern" do
     let(:common_item) { Item.new }
 
     context "magic item" do
-      let(:magic_item) { Item.new true}
+      let(:magic_item) { MagicItemDecorator.new(common_item)}
 
       it "three times more expensive than common item" do
         expect(magic_item.price).to eq(common_item.price * 3)
@@ -18,6 +18,7 @@ describe "Decorator Pattern" do
     end
 
     context "magic masterpiece item" do
+      pending
       let(:full_item) { Item.new true, true }
 
       it "six times more expensive than common item" do
@@ -29,7 +30,7 @@ describe "Decorator Pattern" do
     end
 
     context "masterpiece item" do
-      let(:masterpiece_item) { Item.new false, true }
+      let(:masterpiece_item) { MasterpieceItemDecorator.new(common_item) }
 
       it "two times more expensive than common item" do
         expect(masterpiece_item.price).to eq(common_item.price * 2)
