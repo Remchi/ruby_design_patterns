@@ -18,14 +18,15 @@ describe "Decorator Pattern" do
     end
 
     context "magic masterpiece item" do
-      pending
-      let(:full_item) { Item.new true, true }
+      let(:full_item) { MasterpieceItemDecorator.new(MagicItemDecorator.new(common_item)) }
 
       it "six times more expensive than common item" do
         expect(full_item.price).to eq(common_item.price * 6)
       end
       it "has addition do description" do
         expect(full_item.description).to eq(common_item.description + "Magic.Masterpiece.")
+        full_item = MagicItemDecorator.new(MasterpieceItemDecorator.new(common_item))
+        expect(full_item.description).to eq(common_item.description + "Masterpiece.Magic.")
       end
     end
 
