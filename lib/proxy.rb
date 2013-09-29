@@ -1,15 +1,14 @@
+require 'forwardable'
+
 class ComputerProxy
+  extend Forwardable
+
+  def_delegators :@real_object, :add, :execute
+
   def initialize(real_object)
     @real_object = real_object
   end
 
-  def add(command)
-    @real_object.add(command)
-  end
-
-  def execute
-    @real_object.execute
-  end
 end
 
 class Computer
