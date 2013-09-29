@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../lib/singleton'
+require_relative '../lib/singleton_pattern'
 
 describe "Singleton Pattern" do
 
