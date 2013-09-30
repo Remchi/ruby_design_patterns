@@ -18,6 +18,7 @@ class BoardBuilder
   end
 
   def board
+    raise "Not enough Tiles" if @board.tiles.size < @board.width * @board.height
     @board
   end
 end

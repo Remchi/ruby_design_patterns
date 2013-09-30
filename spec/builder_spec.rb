@@ -3,6 +3,13 @@ require_relative '../lib/builder'
 
 describe "Builder Pattern" do
 
+  it "validates creation of the board" do
+    builder = BoardBuilder.new(2, 5, :easy)
+    builder.add_tiles(:plain, 5)
+
+    expect { builder.board }.to raise_exception
+  end
+
   it "creates board" do
     pending
     tiles = []
