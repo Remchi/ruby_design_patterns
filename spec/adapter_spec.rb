@@ -16,4 +16,16 @@ describe "Adapter Pattern" do
     end
   end
 
+  describe "Finishing OLD quest" do
+    it "rewards hero with experience points" do
+      hero = Hero.new
+      quest = QuestAdapter.new(OldQuest.new, 5)
+
+      hero.take_quest(quest)
+      hero.finish_quest(quest)
+
+      expect(hero.exp).to eq(50)
+    end
+  end
+
 end
